@@ -20,3 +20,703 @@ Migrating to CreateUserModel (20130907025944)
   [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
 Connecting to database specified by database.yml
 DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20130907024529)
+Migrating to CreateUserModel (20130907025944)
+Migrating to AddAuthenticationTokentoUsers (20130907033825)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "authentication_token" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130907033825')
+  [1m[36m (28.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Binary data inserted for `string` type on column `encrypted_password`
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+
+
+Started POST "/api/v1/sessions" for 127.0.0.1 at 2013-09-06 23:40:48 -0400
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 0ms
+
+
+Started POST "/api/v1/sessions" for 127.0.0.1 at 2013-09-06 23:41:27 -0400
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'user@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-09-07 03:41:27.491520', "current_sign_in_at" = '2013-09-07 03:41:27.491520', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-09-07 03:41:27.492579' WHERE "users"."id" = 1[0m
+  [1m[35m (1.7ms)[0m  commit transaction
+Completed 200 OK in 144ms (Views: 0.3ms | ActiveRecord: 5.0ms)
+
+
+Started DELETE "/api/v1/sessions/?auth_token=hkdavGZWMraqDdt7y2GA" for 127.0.0.1 at 2013-09-06 23:42:05 -0400
+Processing by Api::V1::SessionsController#destroy as JSON
+  Parameters: {"auth_token"=>"hkdavGZWMraqDdt7y2GA", "session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'hkdavGZWMraqDdt7y2GA' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2013-09-07 03:42:05.721199', "sign_in_count" = 2, "updated_at" = '2013-09-07 03:42:05.721814' WHERE "users"."id" = 1[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "users" SET "authentication_token" = NULL WHERE "users"."id" = 1[0m
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 2.6ms)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:45:45 -0400
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "name"=>"anotheruser", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "name"=>"anotheruser", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 18ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:46:14 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:47:21 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 64ms (Views: 0.3ms | ActiveRecord: 21.1ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:48:56 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Completed 500 Internal Server Error in 42ms
+
+RuntimeError (--- !ruby/object:User
+attributes:
+  id: 
+  email: ''
+  encrypted_password: ''
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
+  confirmation_token: 
+  confirmed_at: 
+  confirmation_sent_at: 
+  created_at: 
+  updated_at: 
+  authentication_token: 
+):
+  app/controllers/api/v1/registrations_controller.rb:10:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.3ms)
+
+
+Started POST "/api/v1/sessions" for 127.0.0.1 at 2013-09-06 23:51:50 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+
+
+MultiJson::LoadError (795: unexpected token at 'curl&{"user":{"email":"user1@example.com","password":"secreter","password_confirmation":"secreter"}}'):
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  multi_json (1.7.9) lib/multi_json/adapters/json_common.rb:16:in `load'
+  multi_json (1.7.9) lib/multi_json/adapter.rb:19:in `load'
+  multi_json (1.7.9) lib/multi_json.rb:118:in `load'
+  activesupport (3.2.13) lib/active_support/json/decoding.rb:15:in `decode'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:47:in `parse_formatted_parameters'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:17:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__360805734513399236__call__3238347163594332070__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.6ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:51:50 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+
+
+MultiJson::LoadError (795: unexpected token at 'curl&{"user":{"email":"user1@example.com","password":"secreter","password_confirmation":"secreter"}}'):
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  multi_json (1.7.9) lib/multi_json/adapters/json_common.rb:16:in `load'
+  multi_json (1.7.9) lib/multi_json/adapter.rb:19:in `load'
+  multi_json (1.7.9) lib/multi_json.rb:118:in `load'
+  activesupport (3.2.13) lib/active_support/json/decoding.rb:15:in `decode'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:47:in `parse_formatted_parameters'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:17:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__360805734513399236__call__3238347163594332070__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started POST "/api/v1/sessions" for 127.0.0.1 at 2013-09-06 23:52:02 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+
+
+MultiJson::LoadError (795: unexpected token at 'curl&{"user":{"email":"user1@example.com","password":"secreter","password_confirmation":"secreter"}}'):
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  multi_json (1.7.9) lib/multi_json/adapters/json_common.rb:16:in `load'
+  multi_json (1.7.9) lib/multi_json/adapter.rb:19:in `load'
+  multi_json (1.7.9) lib/multi_json.rb:118:in `load'
+  activesupport (3.2.13) lib/active_support/json/decoding.rb:15:in `decode'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:47:in `parse_formatted_parameters'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:17:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__360805734513399236__call__3238347163594332070__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.7ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:52:02 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+
+
+MultiJson::LoadError (795: unexpected token at 'curl&{"user":{"email":"user1@example.com","password":"secreter","password_confirmation":"secreter"}}'):
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  json (1.8.0) lib/json/common.rb:155:in `parse'
+  multi_json (1.7.9) lib/multi_json/adapters/json_common.rb:16:in `load'
+  multi_json (1.7.9) lib/multi_json/adapter.rb:19:in `load'
+  multi_json (1.7.9) lib/multi_json.rb:118:in `load'
+  activesupport (3.2.13) lib/active_support/json/decoding.rb:15:in `decode'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:47:in `parse_formatted_parameters'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:17:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__360805734513399236__call__3238347163594332070__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/Athena/.rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.0ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:53:16 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 24ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:53:40 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 53ms (Views: 0.3ms | ActiveRecord: 16.5ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:54:31 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 2ms
+
+NameError (undefined local variable or method `c' for #<Api::V1::RegistrationsController:0x007fd14a6f4d70>):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.3ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:57:07 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 43ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-06 23:59:17 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 2ms
+
+RuntimeError (--- 
+...
+):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.9ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:01:55 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 1ms
+
+NameError (undefined local variable or method `input' for #<Api::V1::RegistrationsController:0x007fd14800d810>):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.8ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:03:07 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 17ms
+
+TypeError (can't dump anonymous module: #<Module:0x007fd1433b25b0>):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.3ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:03:33 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 1ms
+
+RuntimeError (--- !ruby/object:Mime::Type
+synonyms:
+- text/x-json
+- application/jsonrequest
+symbol: :json
+string: application/json
+):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.8ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:03:57 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 20ms
+
+NoMethodError (undefined method `data' for #<ActionDispatch::Request:0x007fd145ef4390>):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.5ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:04:22 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 16ms
+
+TypeError (can't dump anonymous module: #<Module:0x007fd1433b25b0>):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.2ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:05:27 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 1ms
+
+RuntimeError (--- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+user: &70268424839940 !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  email: user1@example.com
+  password: secreter
+  password_confirmation: secreter
+action: create
+controller: api/v1/registrations
+registration: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  user: *70268424839940
+):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:08:37 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Completed 500 Internal Server Error in 8ms
+
+NoMethodError (undefined method `build' for #<Class:0x007fd14a61d910>):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.8ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:08:39 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `build' for #<Class:0x007fd14a61d910>):
+  app/controllers/api/v1/registrations_controller.rb:8:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.1ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:10:41 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+Completed 500 Internal Server Error in 22ms
+
+RuntimeError (--- !ruby/object:User
+attributes:
+  id: 
+  email: ''
+  encrypted_password: ''
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
+  confirmation_token: 
+  confirmed_at: 
+  confirmation_sent_at: 
+  created_at: 
+  updated_at: 
+  authentication_token: 
+):
+  app/controllers/api/v1/registrations_controller.rb:9:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.7ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:11:18 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'M2awtV4cywbE4vz3suMV' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."confirmation_token" = 'a59a9f473ccab971790e07a49d81dc6eb7bdaa5448115834efae61bde1d1766d' LIMIT 1
+Binary data inserted for `string` type on column `confirmation_token`
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "users" ("authentication_token", "confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["authentication_token", "M2awtV4cywbE4vz3suMV"], ["confirmation_sent_at", Sat, 07 Sep 2013 04:11:19 UTC +00:00], ["confirmation_token", "a59a9f473ccab971790e07a49d81dc6eb7bdaa5448115834efae61bde1d1766d"], ["confirmed_at", nil], ["created_at", Sat, 07 Sep 2013 04:11:19 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "user1@example.com"], ["encrypted_password", "$2a$10$HCcJBMz4UT2mxsu8UJxizOuNjEc52cVRT8gLf9AYIauVEhT8YmrGu"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Sat, 07 Sep 2013 04:11:19 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 670ms
+
+NameError (undefined local variable or method `unconfirmed_email' for #<User:0x007fd148385970>):
+  app/controllers/api/v1/registrations_controller.rb:9:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.3ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:12:02 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'ybSi8FVAyPC22bTex8KQ' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."confirmation_token" = 'a1e3a1ab8610668851993381875d7050f7bf368b7424618acd4978ecbc1459a9' LIMIT 1
+Binary data inserted for `string` type on column `confirmation_token`
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("authentication_token", "confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["authentication_token", "ybSi8FVAyPC22bTex8KQ"], ["confirmation_sent_at", Sat, 07 Sep 2013 04:12:03 UTC +00:00], ["confirmation_token", "a1e3a1ab8610668851993381875d7050f7bf368b7424618acd4978ecbc1459a9"], ["confirmed_at", nil], ["created_at", Sat, 07 Sep 2013 04:12:03 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "user1@example.com"], ["encrypted_password", "$2a$10$9Fr.ULcyx.XgnoFxaXexcuO243FzVfitXksnRYiF2NdoRkMwKQV3O"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Sat, 07 Sep 2013 04:12:03 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 123ms
+
+NameError (undefined local variable or method `unconfirmed_email' for #<User:0x007fd142fc6140>):
+  app/controllers/api/v1/registrations_controller.rb:9:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.1ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:12:39 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'EjsiJ7SAZbPyDEJqBJHw' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("authentication_token", "confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["authentication_token", "EjsiJ7SAZbPyDEJqBJHw"], ["confirmation_sent_at", nil], ["confirmation_token", nil], ["confirmed_at", Sat, 07 Sep 2013 04:12:39 UTC +00:00], ["created_at", Sat, 07 Sep 2013 04:12:39 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "user1@example.com"], ["encrypted_password", "$2a$10$yVT8jtEjbzmSXgGn03wU1.iq91WqfU6Hgngfoayo4WNpxagsqgrDe"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Sat, 07 Sep 2013 04:12:39 UTC +00:00]]
+  [1m[36m (61.9ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 192ms
+
+NameError (undefined local variable or method `user' for #<Api::V1::RegistrationsController:0x007fd143767728>):
+  app/controllers/api/v1/registrations_controller.rb:11:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.5ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:13:01 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 123ms
+
+RuntimeError (--- !ruby/object:User
+attributes:
+  id: 
+  email: user1@example.com
+  encrypted_password: !binary |-
+    JDJhJDEwJC5yQm95aUtJT1NOamh1RHJiQkhZUWU5V0pDaVcyb00udjRnT2NZ
+    MThDeGxVUXIwRjhtUzUu
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
+  confirmation_token: 
+  confirmed_at: 2013-09-07 04:13:01.524830000 Z
+  confirmation_sent_at: 
+  created_at: 
+  updated_at: 
+  authentication_token: 
+):
+  app/controllers/api/v1/registrations_controller.rb:11:in `create'
+
+
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Athena/.rvm/gems/ruby-1.9.3-p429@rails3/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.9ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:13:32 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /Users/Athena/Documents/Aptana_Workspace/LLamaRun/app/models/user.rb:6)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 122ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/v1/registrations" for 127.0.0.1 at 2013-09-07 00:14:09 -0400
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"user1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'user1@example.com' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = '1xMmHWvgWuLdpKtqqsTp' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("authentication_token", "confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["authentication_token", "1xMmHWvgWuLdpKtqqsTp"], ["confirmation_sent_at", nil], ["confirmation_token", nil], ["confirmed_at", Sat, 07 Sep 2013 04:14:09 UTC +00:00], ["created_at", Sat, 07 Sep 2013 04:14:09 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "user1@example.com"], ["encrypted_password", "$2a$10$wz3jIUKzqGRhsUAc4I8WDOlTK7Ck0hLtX.OGi7kJbrhkPLSL8usO."], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Sat, 07 Sep 2013 04:14:09 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-09-07 04:14:09.884813', "current_sign_in_at" = '2013-09-07 04:14:09.884813', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-09-07 04:14:09.885248' WHERE "users"."id" = 3[0m
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 200 OK in 88ms (Views: 0.6ms | ActiveRecord: 3.9ms)
